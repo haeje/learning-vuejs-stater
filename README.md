@@ -4,7 +4,7 @@
 
 예전에는 View에서 모든 코드 로직(이벤트 핸들링, 초기화, 데이터 모델)을 처리했다. UI와 데이터의 바인딩에 의존성이 생기는 등 협업 작업, 유지보수가 힘들었다. ViewModel이라는 인터페이스로 의존성을 낮추는 구조
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f0d531c-d823-40d4-805b-08111f70f62b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f0d531c-d823-40d4-805b-08111f70f62b/Untitled.png)
+![mvvm](https://user-images.githubusercontent.com/36914269/71615756-29b68c80-2bf6-11ea-8d5d-66111f960d84.png)
 
 DOM에서 이벤트가 발생하면, DOM Listeners가 듣고 데이터가 변경에 따라 모델의 값을 바꾼다. 변경된 데이터 모델을 Data Bindings를 이용하여 view를 변경함.
 
@@ -135,11 +135,11 @@ Vue 객체를 생성하면서 설정할 수 있는 옵션은 다음과 같다.
 
 기존 : 데이터가 변경되고 다른 컴포넌트에 영향을 줄 때, 추적하기가 어렵다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ce7c14ba-fa24-4d9f-ab73-d55a89d15db5/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ce7c14ba-fa24-4d9f-ab73-d55a89d15db5/Untitled.png)
+![컴포넌트통신1](https://user-images.githubusercontent.com/36914269/71615769-363ae500-2bf6-11ea-9d1b-99b90d800c39.png)
 
 뷰 통신방식 : 처음엔 번거롭지만, 추적할 수 있다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/81cddf59-0814-45fd-8421-ae99a4a834e9/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/81cddf59-0814-45fd-8421-ae99a4a834e9/Untitled.png)
+![컴포넌트통신2](https://user-images.githubusercontent.com/36914269/71615774-39ce6c00-2bf6-11ea-9c0c-4b8eba72a5b3.png)
 
 ### props 전달하기
 
@@ -151,9 +151,7 @@ Vue 객체를 생성하면서 설정할 수 있는 옵션은 다음과 같다.
 
 # 같은 레벨 컴포넌트 간 통신
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/06547f43-b6b9-4aa5-a6e5-bedabf627b21/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/06547f43-b6b9-4aa5-a6e5-bedabf627b21/Untitled.png)
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a1379f0-12df-494a-a0c0-6dbda466d76a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a1379f0-12df-494a-a0c0-6dbda466d76a/Untitled.png)
+![같은레벨컴포넌트통신](https://user-images.githubusercontent.com/36914269/71615766-31763100-2bf6-11ea-85fb-08702f839b70.png)
 
 1. 전달할 컴포넌트에서 이벤트 emit을 발생시킨다.
 2. 상위 컴포넌트에서 이벤트를 수신한다.
