@@ -162,3 +162,121 @@ Vue 객체를 생성하면서 설정할 수 있는 옵션은 다음과 같다.
 [https://www.w3schools.com/js/js_this.asp](https://www.w3schools.com/js/js_this.asp)
 
 [https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)?
+
+
+---
+# router
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+vue CDN 하위에 router 선언
+
+### VueRouter 객체 연결
+
+vue 객체에 연결시키고 사용할 수 있다.
+
+    const router = new VueRouter();
+    const app = new Vue({
+    		el : '#app',
+    		router : router
+    })
+
+### router 사용 예제
+
+HTML 
+
+    <div id="app">
+            <router-view></router-view>
+    </div>
+
+vue 라우팅은 url에 따라 다른 컴포넌트를 보여주는 방식이다.  'route-view' 태그로 컴포넌트가 위치할 곳을 명시적으로 표현한다. 
+
+JS
+
+    	
+      // url에 따른 컴포넌트 생성
+      const LoginComponent = {
+          template : "<div>login</div>"
+      };
+      const MainComponent = {
+          template : "<div>main</div>"
+      };
+    
+      // url에 따른 라우터 셋팅
+      const routes = [
+          { path : '/login', component : LoginComponent },
+          { path : '/main', component : MainComponent }
+      ]
+    
+    	// routes 정보를 바탕으로 VueRouter 객체 생성
+      const router = new VueRouter({
+          routes
+      });
+    
+    	// VueRouter와 연결한 Vue 객체 생성
+      const app = new Vue({
+          el : '#app',
+          router : router
+      })
+    
+    
+
+### router-link
+
+각 라우트로 이동할 수 있는 링크를 제공한다. 
+
+    <router-link to="/login">Login</router-link>
+    <router-link to="/main">Main</router-link>
+
+다음과 같이 a 태그로 렌더링 된다.
+
+    <a href="/login"></a>
+
+# Axios
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b28c4453-87d8-43b3-abb6-3fa14653b458/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b28c4453-87d8-43b3-abb6-3fa14653b458/Untitled.png)
+
+ajax : 비동기적으로 http 통신
+
+vue-resource : vue의 예전 공식 라이브러리
+
+axios : vue에서 권고하는 비동기 통신 라이브러리
+
+axios github : [https://github.com/axios/axios](https://github.com/axios/axios)
+
+다음과 같은 형식으로 axios를 사용함
+
+1. cdn 선언
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+2. axios 호출
+
+    axiosReq : function(){
+          const vm = this;
+    
+          axios.get('https://jsonplaceholder.typicode.com/users')
+              .then(function (response) {
+                  // handle success
+                  console.log(response);
+                  vm.users = response.data;
+              })
+              .catch(function (error) {
+                  // handle error
+                  console.log(error);
+              })
+              .finally(function () {
+                  // always executed
+              });
+      }
+    
+
+get 매개변수로 데이터를 요청할 서버 url을 입력한다.
+
+.then 함수 구현에서 데이터를 받아온 이후 동작을 구현한다.
+
+.catch 함수 구현에서 err 발생 핸들링을 구현한다.
+
+.finally 비동기 통신에서 마무리 작업할 일이 있다면 이 함수 구현체에 구현한다.
